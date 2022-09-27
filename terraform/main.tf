@@ -15,7 +15,7 @@ module "network" {
 resource "oci_core_instance" "eta" {
   availability_domain = var.availability_domain
   compartment_id      = var.compartment_id
-  shape               = "VM.Standard.E1.Micro"
+  shape               = "VM.Standard.E2.1.Micro"
   display_name        = "terraform-eta"
   source_details {
     source_type = "image"
