@@ -9,6 +9,12 @@
 {
   boot.cleanTmpDir = true;
 
+  # used by tailscale for exit node
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = true;
+    "net.ipv6.conf.all.forwarding" = true;
+  };
+
   environment = {
     # set channels
     etc = {
@@ -66,8 +72,6 @@
       trusted-users = ["root" "@wheel"];
     };
   };
-
-  nixpkgs.pkgs = inputs.self.pkgs.${config.nixpkgs.system};
 
   services = {
     openssh = {
