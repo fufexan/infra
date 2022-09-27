@@ -16,6 +16,8 @@
     # nixos-configs
     nixosConfigurations = import ./servers inputs;
 
+    formatter = genSystems (system: pkgs.${system}.alejandra);
+
     devShells = genSystems (system: {
       default = pkgs.${system}.mkShell {
         buildInputs = with pkgs.${system}; [
