@@ -11,6 +11,7 @@
           oci-cli
           sops
           terraform
+          terraform-ls
         ];
       };
     });
