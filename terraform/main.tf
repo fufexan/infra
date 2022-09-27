@@ -13,7 +13,7 @@ module "network" {
 
 # eta
 resource "oci_core_instance" "eta" {
-  availability_domain = "AD-1"
+  availability_domain = var.availability_domain
   compartment_id      = var.compartment_id
   shape               = "VM.Standard.E1.Micro"
   display_name        = "terraform-eta"

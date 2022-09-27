@@ -2,14 +2,15 @@ OCI_COMPARTMENT_OCID: ENC[AES256_GCM,data:5I93EcEPEXYwmzLC4DSUPgd5zp8nzj4fRkkqnS
 TF_VAR_compartment_id: ENC[AES256_GCM,data:krOYbPxUw9Q3QLLHceY5MO1LAdrlf1acgenTyKG1+nXuMJbIYYWRVhm8QPSlJFFFTDxhmdwtUYhaYn6tKTGH568ND28QlR/UFh4iVfaSCg==,iv:6oIDLyl46RyBwPHYDY6nthidceNEKevieFt8ETv6qc8=,tag:jw59E7R9wLuFyuhH1E3ATg==,type:str]
 region: ENC[AES256_GCM,data:5QKAPYhVAJJwYgivdho=,iv:/xvi9pr8SKSap772tLjQlq2h2ul8FNhi4GHVJ0HBah0=,tag:iYMORzLz0dNVK8lxjULxQg==,type:str]
 TF_VAR_region: ENC[AES256_GCM,data:oHz4l1335QtRbk/VLUU=,iv:XDAEueI9P8Y84vvWhe1X3Po+OIp12ieSFKEWqYBbt+c=,tag:r9r17QJAW4APd9ipCbTsHg==,type:str]
+TF_VAR_availability_domain: ENC[AES256_GCM,data:6ACe6xjzmua5vxnNohDBRfRSqCrnm/hv,iv:g+TJ0iLMiqdPGrwN2nMoaMWrsB74b3C8T+DT3RGeUjE=,tag:6ge/xrYu4nZSIDjSOgwNHQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-09-27T11:17:56Z"
-    mac: ENC[AES256_GCM,data:DQ27MceDkG7kefE60jFBOa6WIi2dZULF+zHkQ8rqchEcgJOhe/80FwCIXAmvvLxZb23H7X8x4i9lsQ9ZUH8BOBa1XC2UBqSK3YWnu0OjXE8hr+YjASFgnSdlU+Ez6cl9mwCYxC6RWUbHNyoKTxJcaf+2an/peXT18UNRFf8Rwvc=,iv:Af/yUfd3Tcnhu9KdXMjkQHu9wkZ5YrMdXROJGRpH8Sc=,tag:m8iC5bURl1pGWk0qgb5PHQ==,type:str]
+    lastmodified: "2022-09-27T12:22:46Z"
+    mac: ENC[AES256_GCM,data:8cp4pyOtIIf3etgDPFtPZY/gBtbNZaB1tTIopvii5IILyPuDVU3if5pD60JlDUOH4bfspaKtVEi1Pnt08wpnLXVLSbXynJsLiWKaDQ5+CISb0zL63DEceRc8aw/CbR3Nfh7NJcvDNgOV3ZCDjT8YcSg+JP3cRxNcoZD0RYU5lc0=,iv:bInNVL5rvgidLIzt73uZ/s5eJWQeJYMtNsl9hWjYS3M=,tag:CRFFH9z+hTP2hUvkqvrxeA==,type:str]
     pgp:
         - created_at: "2022-09-27T10:21:42Z"
           enc: |
