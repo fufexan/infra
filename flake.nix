@@ -12,11 +12,7 @@
         apps = inputs.nixinate.nixinate.x86_64-linux inputs.self;
       };
 
-      perSystem = {
-        pkgs,
-        system,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
 
         devShells.default = pkgs.mkShell {
