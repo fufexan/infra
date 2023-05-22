@@ -1,9 +1,5 @@
 # biggest homeserver
-{
-  lib,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./minecraft.nix
@@ -16,7 +12,7 @@
     group = "matrix-synapse";
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   networking.hostName = "arm-server";
+
+  nixpkgs.config.allowUnfree = true;
 }
