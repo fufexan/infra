@@ -2,7 +2,6 @@
 {inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ./minecraft.nix
     ./synapse.nix
   ];
 

@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  domain = "fufexan.ml";
+  domain = "fufexan.net";
   fqdn = "matrix.${domain}";
 
   clientConfig = {

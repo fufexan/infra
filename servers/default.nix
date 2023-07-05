@@ -8,13 +8,13 @@ inputs: let
 
   inherit (inputs.nixpkgs.lib) nixosSystem;
 in {
-  arm-server = nixosSystem {
+  alpha = nixosSystem {
     modules =
       [
-        ./arm-server
+        ./alpha
         {
           _module.args.nixinate = {
-            host = "arm-server";
+            host = "alpha";
             sshUser = "mihai";
             buildOn = "remote"; # valid args are "local" or "remote"
             substituteOnTarget = false; # if buildOn is "local" then it will substitute on the target, "-s"
