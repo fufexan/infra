@@ -6,7 +6,10 @@
         "x86_64-linux"
       ];
 
-      imports = [./servers];
+      imports = [
+        ./modules
+        ./servers
+      ];
 
       perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
@@ -41,5 +44,10 @@
     impermanence.url = "github:nix-community/impermanence";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    srvos = {
+      url = "github:numtide/srvos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

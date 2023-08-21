@@ -1,28 +1,21 @@
-{inputs, ...}: let
-  sharedModules = [
-    {_module.args = {inherit inputs;};}
-    ../modules/default.nix
-    ../modules/security.nix
-    inputs.agenix.nixosModules.default
-  ];
-
+{
+  inputs,
+  shared_modules,
+  ...
+}: let
   inherit (inputs.nixpkgs.lib) nixosSystem;
 in {
   flake.nixosConfigurations = {
     alpha = nixosSystem {
       modules =
-        [
-          ./alpha
-          inputs.disko.nixosModules.disko
-          inputs.impermanence.nixosModules.impermanence
-        ]
-        ++ sharedModules;
+        [./alpha]
+        ++ shared_modules;
     };
 
     eta = nixosSystem {
       modules =
         [./eta]
-        ++ sharedModules;
+        ++ shared_modules;
 
       system = "x86_64-linux";
     };
@@ -30,7 +23,7 @@ in {
     homesv = nixosSystem {
       modules =
         [./homesv]
-        ++ sharedModules;
+        ++ shared_modules;
 
       system = "x86_64-linux";
     };
