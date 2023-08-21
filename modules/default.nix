@@ -14,12 +14,16 @@
     "net.ipv6.conf.all.forwarding" = true;
   };
 
+  documentation.nixos.enable = false;
+
   environment = {
     # set channels
     etc = {
       "nix/flake-channels/system".source = inputs.self;
       "nix/flake-channels/nixpkgs".source = inputs.nixpkgs;
     };
+
+    systemPackages = [pkgs.helix];
   };
 
   i18n = {
@@ -73,17 +77,9 @@
     };
   };
 
-  services = {
-    openssh = {
-      enable = true;
-      openFirewall = true;
-      settings.UseDns = true;
-    };
+  services.tailscale.enable = true;
 
-    tailscale.enable = true;
-  };
-
-  system.stateVersion = lib.mkDefault "21.11";
+  system.stateVersion = lib.mkDefault "23.11";
 
   # Don't wait for network startup
   # https://old.reddit.com/r/NixOS/comments/vdz86j/how_to_remove_boot_dependency_on_network_for_a
@@ -94,15 +90,29 @@
 
   time.timeZone = lib.mkDefault "Europe/Berlin";
 
-  users.users.admin = {
-    isNormalUser = true;
-    extraGroups = ["networkmanager" "wheel"];
+  security.sudo.wheelNeedsPassword = false;
+  services.getty.autologinUser = "root";
+
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings.UseDns = true;
+    hostKeys = [
+      {
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+        rounds = 100;
+      }
+    ];
   };
 
-  users.users.admin.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMRDsoSresP7/VnrQOYsWWO/5V+EdPEx5PwI0DxW9H00 root@io"
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEYe25Lbgm8IuhOLO5fPSVtJK+avw48yIq/rE1bOb7dl mihai@io"
-  ];
+  users.mutableUsers = false;
+  users.users."mihai" = {
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+    initialPassword = "123";
+    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH81M2NZOzd5tGGRsDv//wkSrVNJJpaiaLghPZBH8VTd"];
+  };
 
   zramSwap.enable = true;
 }

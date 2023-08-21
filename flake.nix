@@ -6,11 +6,7 @@
         "x86_64-linux"
       ];
 
-      flake = {
-        # nixos-configs
-        nixosConfigurations = import ./servers inputs;
-        apps = inputs.nixinate.nixinate.x86_64-linux inputs.self;
-      };
+      imports = [./servers];
 
       perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
@@ -32,16 +28,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    impermanence.url = "github:nix-community/impermanence";
 
-    nixinate = {
-      url = "github:MatthewCroughan/nixinate";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 }
