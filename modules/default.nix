@@ -10,7 +10,9 @@
         inputs.agenix.nixosModules.default
         inputs.disko.nixosModules.disko
         inputs.impermanence.nixosModules.impermanence
+
         inputs.srvos.nixosModules.server
+        inputs.srvos.nixosModules.mixins-nginx
         ./core.nix
       ];
     }

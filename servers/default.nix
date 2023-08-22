@@ -8,7 +8,10 @@ in {
   flake.nixosConfigurations = {
     alpha = nixosSystem {
       modules =
-        [./alpha]
+        [
+          ./alpha
+          ../modules/vaultwarden.nix
+        ]
         ++ shared_modules;
     };
 

@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   inputs,
@@ -31,6 +32,7 @@
   programs.vim.defaultEditor = false;
 
   networking.firewall.checkReversePath = "loose";
+  networking.domain = "fufexan.net";
 
   nix = {
     gc = {
@@ -62,6 +64,13 @@
     };
   };
 
+  security = {
+    acme = {
+      acceptTerms = true;
+      defaults.email = "mihai@${config.networking.domain}";
+    };
+  };
+
   services.tailscale.enable = true;
 
   system.stateVersion = lib.mkDefault "23.11";
@@ -84,7 +93,10 @@
     isNormalUser = true;
     extraGroups = ["wheel"];
     initialPassword = "123";
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH81M2NZOzd5tGGRsDv//wkSrVNJJpaiaLghPZBH8VTd"];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH81M2NZOzd5tGGRsDv//wkSrVNJJpaiaLghPZBH8VTd"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOq9Gew1rgfdIyuriJ/Ne0B8FE1s8O/U2ajErVQLUDu9 mihai@io"
+    ];
   };
 
   zramSwap.enable = true;
