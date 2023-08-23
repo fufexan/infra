@@ -7,8 +7,8 @@
       ];
 
       imports = [
+        ./hosts
         ./modules
-        ./servers
       ];
 
       perSystem = {pkgs, ...}: {
