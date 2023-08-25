@@ -64,37 +64,45 @@
     };
   };
 
-  security = {
-    acme = {
-      acceptTerms = true;
-      defaults.email = "mihai@${config.networking.domain}";
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "mihai@${config.networking.domain}";
+  };
+
+  services = {
+    tailscale.enable = true;
+
+    openssh = {
+      enable = true;
+      openFirewall = true;
+      hostKeys = [
+        {
+          path = "/etc/ssh/ssh_host_ed25519_key";
+          type = "ed25519";
+          rounds = 100;
+        }
+      ];
     };
   };
 
-  services.tailscale.enable = true;
-
   system.stateVersion = lib.mkDefault "23.11";
 
-  services.getty.autologinUser = "root";
-
-  services.openssh = {
+  systemd.network = {
     enable = true;
-    openFirewall = true;
-    hostKeys = [
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-        rounds = 100;
-      }
-    ];
+    networks.ethernet.extraConfig = ''
+      [Match]
+      Type = ether
+      [Network]
+      DHCP = both
+      IPv6AcceptRA = true
+    '';
   };
 
-  users.users."mihai" = {
+  users.users.mihai = {
     isNormalUser = true;
     extraGroups = ["wheel"];
     initialPassword = "123";
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH81M2NZOzd5tGGRsDv//wkSrVNJJpaiaLghPZBH8VTd"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOq9Gew1rgfdIyuriJ/Ne0B8FE1s8O/U2ajErVQLUDu9 mihai@io"
     ];
   };

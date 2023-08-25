@@ -12,7 +12,6 @@
         inputs.impermanence.nixosModules.impermanence
 
         inputs.srvos.nixosModules.server
-        inputs.srvos.nixosModules.mixins-nginx
         ./core.nix
       ];
     }

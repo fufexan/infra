@@ -11,6 +11,7 @@ in {
         [
           ./alpha
           ../modules/vaultwarden.nix
+          inputs.srvos.nixosModules.mixins-nginx
         ]
         ++ shared_modules;
     };
@@ -25,7 +26,10 @@ in {
 
     homesv = nixosSystem {
       modules =
-        [./homesv]
+        [
+          ./homesv
+          ../modules/samba.nix
+        ]
         ++ shared_modules;
 
       system = "x86_64-linux";
