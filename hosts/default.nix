@@ -11,6 +11,7 @@ in {
         [
           ./alpha
           ../modules/vaultwarden.nix
+          ../modules/website.nix
           inputs.srvos.nixosModules.mixins-nginx
         ]
         ++ shared_modules;
