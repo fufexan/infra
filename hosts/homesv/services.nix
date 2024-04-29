@@ -2,14 +2,17 @@
 {
   services.syncthing = {
     enable = true;
+    user = "mihai";
     group = "users";
+    dataDir = "/media/Syncthing";
     guiAddress = ":8384";
     openDefaultPorts = true;
   };
 
   services.transmission = {
     enable = true;
-    user = "nobody";
+    user = "mihai";
+    group = "users";
     home = "/media/Torrents";
     openFirewall = true;
     openRPCPort = true;
