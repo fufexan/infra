@@ -18,14 +18,9 @@ in {
     Group = "root";
   };
 
-  services.nginx.virtualHosts."vault.fufexan.net" = {
-    locations."/" = {
-      proxyPass = "http://${cfg.ROCKET_ADDRESS}:${toString cfg.ROCKET_PORT}";
-      extraConfig = "proxy_pass_header Authorization;";
-    };
-    forceSSL = true;
-    enableACME = true;
-  };
+  services.caddy.virtualHosts."vault.fufexan.net".extraConfig = ''
+    reverse_proxy * ${cfg.ROCKET_ADDRESS}:${toString cfg.ROCKET_PORT}
+  '';
 
   services.vaultwarden = {
     enable = true;
