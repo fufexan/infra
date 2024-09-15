@@ -2,23 +2,13 @@
 
 # 🗒 About
 
-Declarative server management using NixOS & Terraform.
+Declarative server management using NixOS ~~& Terraform~~.
 
 ## ⚙️ Servers
 
-### arm-server
+### germanium
 
-OCI `VM.Standard.A1.Flex` with 4 OCPUs and 24G RAM. Currently manually managed,
-planning management using Terraform.
-
-Hosts a Minecraft and a Matrix Synapse server.
-
-### eta
-
-OCI `VM.Standard.E2.1.Micro` with 1 OCPU and 1G RAM. Used for testing purposes,
-like deploying small services.
-
-Managed with Terraform.
+Hetzner CX22. Vaultwarden + website.
 
 ### homesv
 
