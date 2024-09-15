@@ -14,6 +14,7 @@
       perSystem = {
         pkgs,
         system,
+        inputs',
         ...
       }: {
         _module.args.pkgs = import inputs.nixpkgs {
@@ -22,6 +23,14 @@
         };
 
         formatter = pkgs.alejandra;
+
+        devShells.default = pkgs.mkShell {
+          name = "infra";
+          packages = [
+            pkgs.sops
+            inputs'.agenix.packages.agenix
+          ];
+        };
       };
     };
 
