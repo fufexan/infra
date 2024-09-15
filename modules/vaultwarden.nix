@@ -26,7 +26,7 @@ in {
     enable = true;
     environmentFile = config.age.secrets.vaultwarden-env.path;
 
-    backupDir = "/var/lib/vaultwarden/backup";
+    backupDir = "/var/backup/vaultwarden";
 
     config = {
       DOMAIN = "https://vault.${domain}";
