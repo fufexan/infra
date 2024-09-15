@@ -8,19 +8,22 @@
     samba = {
       enable = true;
       nsswins = true;
-      extraConfig = ''
-        hosts allow = 10.0.0.0/8 100.0.0.0/8 localhost
-        hosts deny = 0.0.0.0/8
-        guest account = nobody
-        map to guest = bad user
-      '';
-      shares.drive = {
-        path = "/media";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "yes";
-        "create mask" = "0777";
-        "directory mask" = "0777";
+      settings = {
+        global = {
+          "hosts allow" = "10.0.0.0/8 100.0.0.0/8 localhost";
+          "hosts deny" = "0.0.0.0/8";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
+        };
+
+        drive = {
+          path = "/media";
+          browseable = "yes";
+          "read only" = "no";
+          "guest ok" = "yes";
+          "create mask" = "0777";
+          "directory mask" = "0777";
+        };
       };
       openFirewall = true;
     };
