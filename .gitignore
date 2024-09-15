@@ -1,3 +1,5 @@
 .terraform*
+.direnv
+.pre-commit-config.yaml
 terraform.tfstate*
 config.tf.json

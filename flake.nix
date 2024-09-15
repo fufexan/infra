@@ -9,9 +9,11 @@
       imports = [
         ./hosts
         ./modules
+        ./pre-commit-hooks.nix
       ];
 
       perSystem = {
+        config,
         pkgs,
         system,
         inputs',
@@ -30,6 +32,9 @@
             pkgs.sops
             inputs'.agenix.packages.agenix
           ];
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+          '';
         };
       };
     };
@@ -40,19 +45,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence";
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     srvos = {
       url = "github:numtide/srvos";
