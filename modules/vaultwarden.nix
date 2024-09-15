@@ -12,6 +12,9 @@ in {
     mode = "400";
   };
 
+  # allow SMTP
+  networking.firewall.allowedTCPPorts = [587];
+
   # this forces the system to create backup folder
   systemd.services.backup-vaultwarden.serviceConfig = {
     User = "root";
@@ -19,7 +22,12 @@ in {
   };
 
   services.caddy.virtualHosts."vault.fufexan.net".extraConfig = ''
-    reverse_proxy * ${cfg.ROCKET_ADDRESS}:${toString cfg.ROCKET_PORT}
+    encode zstd gzip
+    reverse_proxy ${cfg.ROCKET_ADDRESS}:${toString cfg.ROCKET_PORT} {
+      header_up X-Real-IP {remote_host}
+      # Use this instead, if using Cloudflare's proxy
+      # header_up X-Real-IP {http.request.header.Cf-Connecting-Ip}
+    }
   '';
 
   services.vaultwarden = {
@@ -46,11 +54,11 @@ in {
       signupsVerify = true;
 
       smtpAuthMechanism = "Login";
-      smtpFrom = "vaultwarden@${domain}";
+      smtpFrom = "mihai@${domain}";
       smtpFromName = "fufexan's Vaultwarden Service";
-      smtpHost = "smtp.zeptomail.eu";
-      smtpPort = 465;
-      smtpSecurity = "force_tls";
+      smtpHost = "smtppro.zoho.eu";
+      smtpPort = 587;
+      smtpSecurity = "starttls";
       dataDir = "/var/lib/vaultwarden";
     };
   };
