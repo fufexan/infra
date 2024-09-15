@@ -16,14 +16,6 @@ in {
         ++ shared_modules;
     };
 
-    eta = nixosSystem {
-      modules =
-        [./eta]
-        ++ shared_modules;
-
-      system = "x86_64-linux";
-    };
-
     homesv = nixosSystem {
       modules =
         [
