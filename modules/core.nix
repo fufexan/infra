@@ -94,13 +94,13 @@
 
   systemd.network = {
     enable = true;
-    networks.ethernet.extraConfig = lib.mkDefault ''
-      [Match]
-      Type = ether
-      [Network]
-      DHCP = both
-      IPv6AcceptRA = true
-    '';
+    networks."90-ethernet" = lib.mkDefault {
+      matchConfig.Name = "ether";
+      networkConfig = {
+        DHCP = "yes";
+        IPv6AcceptRA = "yes";
+      };
+    };
   };
 
   users.users.mihai = {

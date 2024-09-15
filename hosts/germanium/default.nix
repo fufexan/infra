@@ -9,17 +9,16 @@
     device = "/dev/sda";
   };
 
-  systemd.network = {
-    networks.ethernet.extraConfig = ''
-      [Match]
-      Type = ether
-      [Network]
-      Address = 2a01:4f8:c013:eb9::1/64
-      DHCP = ipv4
-      IPv6AcceptRA = no
-      LinkLocalAddressing = no
-    '';
+  systemd.network.networks."30-wan" = {
+    matchConfig.Type = "ether";
+    networkConfig = {
+      DHCP = "ipv4";
+      Address = "2a01:4f8:c013:eb9::1/64";
+      Gateway = "fe80::1";
+    };
   };
+
+  systemd.network.networks."90-ethernet".enable = false;
 
   networking.hostName = "germanium";
 
