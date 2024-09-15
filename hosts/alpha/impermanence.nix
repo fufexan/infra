@@ -4,6 +4,7 @@
     directories = [
       "/var/log"
       "/var/lib/systemd/coredump"
+      "/var/lib/nixos"
       "/tmp" # Make builds not crash by running them on disk instead of RAM (We still clean /tmp on boot)
     ];
     files =
