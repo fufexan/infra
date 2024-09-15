@@ -6,10 +6,10 @@
   inherit (inputs.nixpkgs.lib) nixosSystem;
 in {
   flake.nixosConfigurations = {
-    alpha = nixosSystem {
+    germanium = nixosSystem {
       modules =
         [
-          ./alpha
+          ./germanium
           ../modules/vaultwarden.nix
           ../modules/website.nix
         ]

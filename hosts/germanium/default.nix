@@ -5,7 +5,7 @@
     # ./minecraft.nix
   ];
 
-  networking.hostName = "alpha";
+  networking.hostName = "germanium";
 
   services.getty.autologinUser = "root";
 }
