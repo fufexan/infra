@@ -22,15 +22,6 @@
         };
 
         formatter = pkgs.alejandra;
-
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            oci-cli
-            sops
-            terraform
-            terraform-ls
-          ];
-        };
       };
     };
 
