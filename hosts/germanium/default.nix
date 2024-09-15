@@ -9,6 +9,8 @@
     device = "/dev/sda";
   };
 
+  networking.firewall.allowedTCPPorts = [80 443];
+
   systemd.network.networks."30-wan" = {
     matchConfig.Type = "ether";
     networkConfig = {
