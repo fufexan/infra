@@ -2,7 +2,7 @@
   imports = [
     ./hardware.nix
     ./impermanence.nix
-    ./minecraft.nix
+    # ./minecraft.nix
   ];
 
   networking.hostName = "alpha";
