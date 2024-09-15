@@ -94,7 +94,7 @@
 
   systemd.network = {
     enable = true;
-    networks.ethernet.extraConfig = ''
+    networks.ethernet.extraConfig = lib.mkDefault ''
       [Match]
       Type = ether
       [Network]
