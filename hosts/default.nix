@@ -1,30 +1,34 @@
 {
   inputs,
-  shared_modules,
+  self,
   ...
 }: let
   inherit (inputs.nixpkgs.lib) nixosSystem;
+
+  mod = "${self}/modules";
+  specialArgs = {inherit inputs self;};
 in {
   flake.nixosConfigurations = {
     germanium = nixosSystem {
-      modules =
-        [
-          ./germanium
-          ../modules/vaultwarden.nix
-          ../modules/website.nix
-        ]
-        ++ shared_modules;
+      inherit specialArgs;
+      modules = [
+        ./germanium
+        mod
+        "${mod}/networking"
+        "${mod}/services/caddy.nix"
+        "${mod}/services/vaultwarden.nix"
+        "${mod}/services/website.nix"
+      ];
     };
 
     homesv = nixosSystem {
-      modules =
-        [
-          ./homesv
-          ../modules/samba.nix
-        ]
-        ++ shared_modules;
-
-      system = "x86_64-linux";
+      inherit specialArgs;
+      modules = [
+        ./homesv
+        mod
+        "${mod}/networking"
+        "${mod}/services/samba.nix"
+      ];
     };
   };
 }

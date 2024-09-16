@@ -36,15 +36,5 @@
     # data in the sender’s initial TCP SYN. Setting 3 = enable TCP Fast Open for
     # both incoming and outgoing connections:
     "net.ipv4.tcp_fastopen" = 3;
-    # Bufferbloat mitigations + slight improvement in throughput & latency
-    "net.ipv4.tcp_congestion_control" = "bbr";
-    "net.core.default_qdisc" = "cake";
-  };
-  boot.kernelModules = ["tcp_bbr"];
-
-  # So we don't have to do this later...
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "fufexan@proton.me";
   };
 }
