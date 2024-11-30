@@ -18,6 +18,6 @@
   users.users.user = {
     isNormalUser = true;
     createHome = false;
-    hashedPassword = "$6$ENNQ3EC40RMVUr71$oIU8lKa072ucswxNID9CAL5r2v2ih3YK7Dfuva.lEgS22aOs/0Omcead2loZKnolMKqxaPushmV1XQhYtDzgV.";
+    hashedPassword = "$y$j9T$Ne9tVneuIjJslba3ErU0Z.$peEWu/MZQ1sZwkqY2vMK8eGDBCJqJt2T0uvmqLKnDP0";
   };
 }

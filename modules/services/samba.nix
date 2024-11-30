@@ -19,10 +19,18 @@
         drive = {
           path = "/media";
           browseable = "yes";
+          # R/W
           "read only" = "no";
-          "guest ok" = "yes";
-          "create mask" = "0777";
-          "directory mask" = "0777";
+          # For authenticated users only
+          "guest ok" = "no";
+          # Only users in the `users` group
+          # Make sure you add each user to samba's DB using `sudo smbpasswd -a <user>`
+          # Also enable them using `sudo smbpasswd -e <user>`
+          "valid users" = "@users";
+          "force group" = "users";
+          # Make sure the entire /media is 775, or you'll have problems with the lines below
+          "create mask" = "0775";
+          "directory mask" = "0775";
         };
       };
       openFirewall = true;
