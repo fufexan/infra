@@ -16,6 +16,7 @@ in {
         mod
         "${mod}/networking"
         "${mod}/services/caddy.nix"
+        "${mod}/services/soju.nix"
         "${mod}/services/vaultwarden.nix"
         "${mod}/services/website.nix"
       ];

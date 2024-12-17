@@ -1,12 +1,28 @@
-{config, ...}: {
-  security.acme.certs.soju = {};
-
-  services.soju = let
-    certDir = config.security.acme.certs.soju.directory;
+{
+  networking.firewall = let
+    ports = [6697];
   in {
-    enable = true;
-
-    tlsCertificate = "${certDir}/fullchain.pem";
-    tlsCertificateKey = "${certDir}/key.pem";
+    allowedTCPPorts = ports;
+    allowedUDPPorts = ports;
   };
+
+  services.soju = {
+    enable = true;
+    hostName = "fufexan.net";
+    listen = ["irc+insecure://localhost:6667"];
+  };
+
+  services.caddy.globalConfig = ''
+    layer4 {
+      :6697 {
+        route {
+          tls
+          proxy {
+            proxy_protocol v2
+            upstream localhost:6667
+          }
+        }
+      }
+    }
+  '';
 }
