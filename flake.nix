@@ -9,6 +9,7 @@
       imports = [
         ./hosts
         ./pre-commit-hooks.nix
+        ./pkgs
       ];
 
       perSystem = {
