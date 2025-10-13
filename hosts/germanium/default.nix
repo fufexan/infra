@@ -11,6 +11,10 @@
 
   networking.firewall.allowedTCPPorts = [80 443];
 
+  services.tailscale.extraSetFlags = [
+    "--advertise-exit-node"
+  ];
+
   systemd.services.tailscale-transport-layer-offloads = {
     # Borrowed from https://github.com/kivikakk/vyxos/blob/a5d208520c22c9d7a2ff504d33d8b5ccb9b991d3/modules/net/default.nix#L93
     # See https://tailscale.com/kb/1320/performance-best-practices#ethtool-configuration.

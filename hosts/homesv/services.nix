@@ -24,4 +24,10 @@
       rpc-host-whitelist = "homesv,homesv.local";
     };
   };
+
+  services.tailscale.extraSetFlags = [
+    "--advertise-exit-node"
+    "--advertise-routes"
+    "192.168.1.0/24"
+  ];
 }
