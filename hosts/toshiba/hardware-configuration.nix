@@ -19,12 +19,18 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
     fsType = "btrfs";
-    subvolume = "@";
+    options = [
+      "subvol=@"
+      "noatime"
+    ];
   };
   fileSystems."/home" = {
     device = "/dev/disk/by-label/nixos";
     fsType = "btrfs";
-    subvolume = "@home";
+    options = [
+      "subvol=@home"
+      "noatime"
+    ];
   };
 
   swapDevices = [
