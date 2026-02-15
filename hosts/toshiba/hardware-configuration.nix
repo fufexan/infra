@@ -17,7 +17,7 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
+    device = "/dev/disk/by-label/NixOS";
     fsType = "btrfs";
     options = [
       "subvol=@"
@@ -25,7 +25,7 @@
     ];
   };
   fileSystems."/home" = {
-    device = "/dev/disk/by-label/nixos";
+    device = "/dev/disk/by-label/NixOS";
     fsType = "btrfs";
     options = [
       "subvol=@home"
