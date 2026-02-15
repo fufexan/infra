@@ -31,5 +31,15 @@ in {
         "${mod}/services/samba.nix"
       ];
     };
+
+    toshiba = nixosSystem {
+      inherit specialArgs;
+      modules = [
+        ./toshiba
+        mod
+        "${mod}/networking"
+        "${mod}/services/samba.nix"
+      ];
+    };
   };
 }
