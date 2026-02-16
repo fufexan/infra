@@ -13,7 +13,7 @@
   networking.hostName = "homesv";
 
   # don't suspend when lid is closed
-  services.logind.lidSwitch = "ignore";
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
 
   users.users.user = {
     isNormalUser = true;

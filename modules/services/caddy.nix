@@ -12,6 +12,6 @@
 
   services.caddy = {
     enable = true;
-    package = self.packages.${pkgs.system}.caddy-with-plugins;
+    package = self.packages.${pkgs.stdenv.hostPlatform.system}.caddy-with-plugins;
   };
 }

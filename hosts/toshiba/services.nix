@@ -1,3 +1,4 @@
+{pkgs, ...}:
 # server services
 {
   services.syncthing = {
@@ -11,6 +12,9 @@
 
   services.transmission = {
     enable = true;
+
+    package = pkgs.transmission_4;
+
     user = "mihai";
     group = "users";
     home = "/media/Torrents";
