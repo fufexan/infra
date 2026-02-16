@@ -1,6 +1,7 @@
 {
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-linux"
         "x86_64-linux"
@@ -12,26 +13,28 @@
         ./pkgs
       ];
 
-      perSystem = {
-        config,
-        pkgs,
-        system,
-        inputs',
-        ...
-      }: {
-        formatter = pkgs.alejandra;
+      perSystem =
+        {
+          config,
+          pkgs,
+          system,
+          inputs',
+          ...
+        }:
+        {
+          formatter = pkgs.nixfmt-tree;
 
-        devShells.default = pkgs.mkShell {
-          name = "infra";
-          packages = [
-            pkgs.sops
-            inputs'.agenix.packages.agenix
-          ];
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
+          devShells.default = pkgs.mkShell {
+            name = "infra";
+            packages = [
+              pkgs.sops
+              inputs'.agenix.packages.agenix
+            ];
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
+          };
         };
-      };
     };
 
   inputs = {

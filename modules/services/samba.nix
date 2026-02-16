@@ -1,7 +1,15 @@
 {
   networking.firewall = {
-    allowedTCPPorts = [139 445 5357];
-    allowedUDPPorts = [137 138 3702];
+    allowedTCPPorts = [
+      139
+      445
+      5357
+    ];
+    allowedUDPPorts = [
+      137
+      138
+      3702
+    ];
   };
 
   services = {

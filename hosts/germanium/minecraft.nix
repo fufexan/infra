@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.minecraft-server = {
     enable = true;
     package = pkgs.minecraftServers.vanilla-1-20;
@@ -11,7 +12,7 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [25575];
-    allowedUDPPorts = [25575];
+    allowedTCPPorts = [ 25575 ];
+    allowedUDPPorts = [ 25575 ];
   };
 }

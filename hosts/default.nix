@@ -2,12 +2,14 @@
   inputs,
   self,
   ...
-}: let
+}:
+let
   inherit (inputs.nixpkgs.lib) nixosSystem;
 
   mod = "${self}/modules";
-  specialArgs = {inherit inputs self;};
-in {
+  specialArgs = { inherit inputs self; };
+in
+{
   flake.nixosConfigurations = {
     germanium = nixosSystem {
       inherit specialArgs;

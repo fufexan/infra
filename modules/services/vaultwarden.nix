@@ -2,10 +2,12 @@
   config,
   self,
   ...
-}: let
+}:
+let
   inherit (config.networking) domain;
   cfg = config.services.vaultwarden.config;
-in {
+in
+{
   age.secrets.vaultwarden-env = {
     file = "${self}/secrets/vaultwarden-env.age";
     owner = "vaultwarden";
@@ -13,7 +15,7 @@ in {
   };
 
   # allow SMTP
-  networking.firewall.allowedTCPPorts = [587];
+  networking.firewall.allowedTCPPorts = [ 587 ];
 
   # this forces the system to create backup folder
   systemd.services.backup-vaultwarden.serviceConfig = {
