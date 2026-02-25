@@ -1,9 +1,20 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  self,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
     # ./minecraft.nix
   ];
+
+  age.secrets.aiostreams-env = {
+    file = "${self}/secrets/aiostreams-env.age";
+    owner = "root";
+    mode = "400";
+  };
 
   boot.loader.grub = {
     enable = true;
@@ -18,6 +29,21 @@
   services.tailscale.extraSetFlags = [
     "--advertise-exit-node"
   ];
+
+  services.aiostreams = {
+    enable = true;
+    environment =
+      let
+        fqdn = "aiostreams.${config.networking.domain}";
+      in
+      {
+        ADDON_ID = fqdn;
+        BASE_URL = "https://${fqdn}";
+      };
+    environmentFiles = [
+      config.age.secrets.aiostreams-env.path
+    ];
+  };
 
   systemd.services.tailscale-transport-layer-offloads = {
     # Borrowed from https://github.com/kivikakk/vyxos/blob/a5d208520c22c9d7a2ff504d33d8b5ccb9b991d3/modules/net/default.nix#L93

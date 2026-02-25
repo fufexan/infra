@@ -21,6 +21,8 @@ in
         "${mod}/services/soju.nix"
         "${mod}/services/vaultwarden.nix"
         "${mod}/services/website.nix"
+        "${mod}/services/virtualisation"
+        "${mod}/services/virtualisation/aiostreams.nix"
       ];
     };
 
