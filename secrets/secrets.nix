@@ -16,9 +16,5 @@ in
     mihai
     germanium
   ];
-  "aiostreams-env.age".publicKeys = [
-    mihai
-    germanium
-  ];
   "mihai-password.age".publicKeys = [ mihai ] ++ servers;
 }
