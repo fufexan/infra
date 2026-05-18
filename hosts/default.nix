@@ -16,6 +16,8 @@ in
       modules = [
         ./germanium
         mod
+        inputs.srvos.nixosModules.hardware-hetzner-cloud
+        inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
         "${mod}/services/caddy.nix"
         "${mod}/services/soju.nix"
@@ -29,6 +31,7 @@ in
       modules = [
         ./homesv
         mod
+        inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
         "${mod}/services/samba.nix"
       ];
@@ -39,6 +42,7 @@ in
       modules = [
         ./toshiba
         mod
+        inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
         "${mod}/services/samba.nix"
       ];
