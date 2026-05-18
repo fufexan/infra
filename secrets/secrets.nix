@@ -17,4 +17,8 @@ in
     germanium
   ];
   "mihai-password.age".publicKeys = [ mihai ] ++ servers;
+  "toshiba-networks.age".publicKeys = [
+    mihai
+    toshiba
+  ];
 }

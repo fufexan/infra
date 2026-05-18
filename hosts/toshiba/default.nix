@@ -1,3 +1,4 @@
+{ config, self, ... }:
 # home server configuration
 {
   imports = [
@@ -5,12 +6,27 @@
     ./services.nix
   ];
 
+  age.secrets.toshiba-networks = {
+    file = "${self}/secrets/toshiba-networks.age";
+    owner = "root";
+    mode = "444";
+  };
+
   boot.loader.grub = {
     enable = true;
     device = "/dev/sda";
   };
 
   networking.hostName = "toshiba";
+  networking.wireless = {
+    enable = true;
+    networks = {
+      "[object Object]" = {
+        pskRaw = "ext:psk_objectObject";
+      };
+    };
+    secretsFile = config.age.secrets.toshiba-networks.path;
+  };
 
   # don't suspend when lid is closed
   services.logind.settings.Login.HandleLidSwitch = "ignore";
