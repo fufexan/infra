@@ -18,12 +18,4 @@
     ];
     hashedPasswordFile = config.age.secrets.mihai-password.path;
   };
-
-  users.users.razvan = {
-    isNormalUser = true;
-    initialPassword = "123";
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBXCgRRSDBe37h5zq5Aif6KuRn6HHfpwmmsNTFZvP8vq razvan@germanium"
-    ];
-  };
 }
