@@ -31,6 +31,7 @@ in
       modules = [
         ./homesv
         mod
+        inputs.srvos.nixosModules.mixins-mdns
         inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
         "${mod}/services/samba.nix"
@@ -42,6 +43,7 @@ in
       modules = [
         ./toshiba
         mod
+        inputs.srvos.nixosModules.mixins-mdns
         inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
         "${mod}/services/samba.nix"
