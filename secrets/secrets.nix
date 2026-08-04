@@ -1,5 +1,11 @@
 let
-  mihai = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOq9Gew1rgfdIyuriJ/Ne0B8FE1s8O/U2ajErVQLUDu9 mihai@io";
+  mihai-io = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOq9Gew1rgfdIyuriJ/Ne0B8FE1s8O/U2ajErVQLUDu9 mihai@io";
+  mihai-ganymede = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOL3wmT33pc4K1Rx8XZbrtl6y1OhZecCHFz77QF4xvaA mihai@ganymede";
+
+  users = [
+    mihai-io
+    mihai-ganymede
+  ];
 
   germanium = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH59Ji3FQo4DkTW9knLuXpX/BC7IEEfiO65CJdT7Dw2l root@germanium";
   homesv = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFUrerO2XIHlOUZmPly+r7d9puX8dSN6bMyypJ6zVBra root@nixos";
@@ -12,13 +18,7 @@ let
   ];
 in
 {
-  "vaultwarden-env.age".publicKeys = [
-    mihai
-    germanium
-  ];
-  "mihai-password.age".publicKeys = [ mihai ] ++ servers;
-  "toshiba-networks.age".publicKeys = [
-    mihai
-    toshiba
-  ];
+  "vaultwarden-env.age".publicKeys = users ++ [ germanium ];
+  "mihai-password.age".publicKeys = users ++ servers;
+  "toshiba-networks.age".publicKeys = users ++ [ toshiba ];
 }
