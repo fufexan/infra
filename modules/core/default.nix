@@ -11,7 +11,6 @@
     inputs.srvos.nixosModules.server
     ./nix.nix
     ./security.nix
-    ./users.nix
   ];
 
   environment.systemPackages = [ pkgs.helix ];

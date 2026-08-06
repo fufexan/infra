@@ -1,6 +1,6 @@
 let
-  mihai-io = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOq9Gew1rgfdIyuriJ/Ne0B8FE1s8O/U2ajErVQLUDu9 mihai@io";
-  mihai-ganymede = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOL3wmT33pc4K1Rx8XZbrtl6y1OhZecCHFz77QF4xvaA mihai@ganymede";
+  mihai-io = builtins.readFile ../modules/users/keys/mihai-io.pub;
+  mihai-ganymede = builtins.readFile ../modules/users/keys/mihai-ganymede.pub;
 
   users = [
     mihai-io
