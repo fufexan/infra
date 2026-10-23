@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  inherit (config.networking) domain;
+in
 {
   networking.firewall =
     let
@@ -10,7 +14,7 @@
 
   services.soju = {
     enable = true;
-    hostName = "fufexan.net";
+    hostName = domain;
     listen = [ "irc+insecure://localhost:6667" ];
   };
 

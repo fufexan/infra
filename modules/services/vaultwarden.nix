@@ -5,6 +5,7 @@
 }:
 let
   inherit (config.networking) domain;
+  fqdn = "vault.${domain}";
   cfg = config.services.vaultwarden.config;
 in
 {
@@ -23,7 +24,7 @@ in
     Group = "root";
   };
 
-  services.caddy.virtualHosts."vault.fufexan.net".extraConfig = ''
+  services.caddy.virtualHosts.${fqdn}.extraConfig = ''
     encode zstd gzip
     reverse_proxy ${cfg.ROCKET_ADDRESS}:${toString cfg.ROCKET_PORT} {
       header_up X-Real-IP {remote_host}
@@ -39,7 +40,7 @@ in
     backupDir = "/var/backup/vaultwarden";
 
     config = {
-      DOMAIN = "https://vault.${domain}";
+      DOMAIN = "https://${fqdn}";
       SIGNUPS_ALLOWED = false;
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8222;

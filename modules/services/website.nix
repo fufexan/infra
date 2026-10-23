@@ -1,8 +1,12 @@
+{ config, ... }:
+let
+  domain = config.networking.domain;
+in
 {
   services.caddy.virtualHosts = {
-    "fufexan.net".extraConfig = ''
+    ${domain}.extraConfig = ''
       encode zstd gzip
-      root * /var/www/fufexan.net
+      root * /var/www/${domain}
       file_server
 
       handle_errors {
@@ -15,11 +19,11 @@
       }
     '';
 
-    "cv.fufexan.net".extraConfig = ''
+    "cv.${domain}".extraConfig = ''
       redir https://github.com/fufexan/cv
     '';
 
-    "dots.fufexan.net".extraConfig = ''
+    "dots.${domain}".extraConfig = ''
       redir https://github.com/fufexan/dotfiles
     '';
   };
