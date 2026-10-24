@@ -21,4 +21,5 @@ in
   "vaultwarden-env.age".publicKeys = users ++ [ germanium ];
   "mihai-password.age".publicKeys = users ++ servers;
   "toshiba-networks.age".publicKeys = users ++ [ toshiba ];
+  "tuwunel-registration-token.age".publicKeys = users ++ [ germanium ];
 }

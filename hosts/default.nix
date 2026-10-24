@@ -21,6 +21,7 @@ in
         "${mod}/networking"
         "${mod}/services/caddy.nix"
         "${mod}/services/soju.nix"
+        "${mod}/services/tuwunel.nix"
         "${mod}/services/vaultwarden.nix"
         "${mod}/services/website.nix"
       ];
