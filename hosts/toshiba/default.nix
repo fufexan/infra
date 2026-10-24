@@ -1,4 +1,9 @@
-{ config, self, ... }:
+{
+  config,
+  self,
+  pkgs,
+  ...
+}:
 # home server configuration
 {
   imports = [
@@ -16,6 +21,8 @@
     enable = true;
     device = "/dev/sda";
   };
+
+  environment.systemPackages = [ pkgs.wol ];
 
   networking.hostName = "toshiba";
   networking.wireless = {
