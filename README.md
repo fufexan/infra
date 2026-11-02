@@ -8,9 +8,12 @@ Declarative server management using NixOS ~~& Terraform~~.
 
 ### germanium
 
-Hetzner CX22. Vaultwarden + website.
+Hetzner CX22. Vaultwarden, website, tuwunel (Matrix) and soju (IRC bouncer).
 
 ### homesv
 
-Dell Latitude D630 with a Core 2 Duo and 2G DDR2. My only home server, runs a
-Samba and Transmission server. Mostly used for file access across the house.
+Dell Latitude D630 with a Core 2 Duo and 2G DDR2. My only home server, runs a Samba and Transmission server. Mostly used for file access across the house.
+
+### toshiba
+
+Toshiba Satellite C670 with a Pentium 4 and 8G DDR3. Runs Syncthing, Samba and Transmission. Also used as Tailscale exit node and Wake-on-LAN client to wake up my main PC.
