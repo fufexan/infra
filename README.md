@@ -8,7 +8,7 @@ Declarative server management using NixOS ~~& Terraform~~.
 
 ### germanium
 
-Hetzner CX22. Vaultwarden, website, tuwunel (Matrix), soju (IRC bouncer), reverse proxy.
+Hetzner CX22. Bulwark + legacy-proxy, Vaultwarden, website, tuwunel (Matrix), soju (IRC bouncer), reverse proxy.
 
 ### homesv
 

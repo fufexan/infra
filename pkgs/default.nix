@@ -7,6 +7,7 @@
       packages = {
         # Adapted from https://github.com/strideynet/nixos-caddy-patched
         caddy-with-plugins = pkgs.callPackage ./caddy-with-plugins { };
+        legacy-proxy = pkgs.callPackage ./legacy-proxy { };
       };
     };
 }

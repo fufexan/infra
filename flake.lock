@@ -72,6 +72,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-bulwark": {
+      "locked": {
+        "lastModified": 1793555392,
+        "narHash": "sha256-xCmfLI+9lSsE1qfMEgphd+JfPiemuCpxyII45Ku2EPY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c5e5854b2905682450332f8b47ee69dc6d602a52",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "refs/pull/574920/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -98,6 +114,7 @@
         "agenix": "agenix",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-bulwark": "nixpkgs-bulwark",
         "pre-commit-hooks": "pre-commit-hooks",
         "srvos": "srvos"
       }

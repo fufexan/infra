@@ -23,4 +23,5 @@ in
   "toshiba-networks.age".publicKeys = users ++ [ toshiba ];
   "tuwunel-registration-token.age".publicKeys = users ++ [ germanium ];
   "immich.age".publicKeys = users ++ [ toshiba ];
+  "legacy-proxy-env.age".publicKeys = users ++ [ germanium ];
 }

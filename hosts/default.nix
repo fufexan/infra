@@ -19,8 +19,10 @@ in
         inputs.srvos.nixosModules.hardware-hetzner-cloud
         inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
+        "${mod}/services/bulwark.nix"
         "${mod}/services/caddy.nix"
         "${mod}/services/immich-proxy.nix"
+        "${mod}/services/legacy-proxy.nix"
         "${mod}/services/soju.nix"
         "${mod}/services/tuwunel.nix"
         "${mod}/services/vaultwarden.nix"
