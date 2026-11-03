@@ -20,6 +20,7 @@ in
         inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
         "${mod}/services/caddy.nix"
+        "${mod}/services/immich-proxy.nix"
         "${mod}/services/soju.nix"
         "${mod}/services/tuwunel.nix"
         "${mod}/services/vaultwarden.nix"
@@ -47,6 +48,7 @@ in
         inputs.srvos.nixosModules.mixins-mdns
         inputs.srvos.nixosModules.mixins-terminfo
         "${mod}/networking"
+        "${mod}/services/immich.nix"
         "${mod}/services/samba.nix"
       ];
     };
