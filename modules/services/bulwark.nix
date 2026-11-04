@@ -1,5 +1,6 @@
 {
   inputs,
+  self,
   config,
   pkgs,
   ...
@@ -7,6 +8,7 @@
 let
   inherit (config.networking) domain;
   fqdn = "mail.${domain}";
+  sessionSecret = "/run/credentials/bulwark.service/session-secret";
 in
 {
   # module and package come from NixOS/nixpkgs#574920, drop this once it merges
@@ -25,12 +27,23 @@ in
       jmapServerUrl = "https://jmap.${domain}";
       # legacy-proxy is not Stalwart
       stalwartFeaturesEnabled = false;
+
+      # "remember me" sessions and server-side settings sync
+      sessionSecretFile = sessionSecret;
+      settingsSyncEnabled = true;
     };
   };
 
-  # Caddy terminates TLS, so cookies and HSTS must be marked secure explicitly
-  # (see the X-Forwarded-Proto note below)
-  systemd.services.bulwark.environment.COOKIE_SECURE = "true";
+  # the service is a DynamicUser, which cannot read the root-owned agenix file,
+  # so systemd copies it to /run/credentials/bulwark.service/session-secret
+  age.secrets.bulwark-session-secret.file = "${self}/secrets/bulwark-session-secret.age";
+
+  systemd.services.bulwark = {
+    # Caddy terminates TLS, so cookies and HSTS must be marked secure explicitly
+    # (see the X-Forwarded-Proto note below)
+    environment.COOKIE_SECURE = "true";
+    serviceConfig.LoadCredential = "session-secret:${config.age.secrets.bulwark-session-secret.path}";
+  };
 
   services.caddy.virtualHosts.${fqdn}.extraConfig = ''
     encode zstd gzip
