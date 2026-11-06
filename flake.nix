@@ -53,6 +53,9 @@
     # bulwark 1.19.1 and its reworked module, until NixOS/nixpkgs#574920 merges
     nixpkgs-bulwark.url = "github:NixOS/nixpkgs?ref=refs/pull/574920/head";
 
+    # JMAP gateway in front of IMAP, replaces legacy-proxy
+    jmapper.url = "github:amaanq/jmapper";
+
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";

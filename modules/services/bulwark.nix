@@ -23,9 +23,9 @@ in
 
     settings = {
       appName = "Mail";
-      # legacy-proxy, see legacy-proxy.nix
+      # jmapper, see jmapper.nix
       jmapServerUrl = "https://jmap.${domain}";
-      # legacy-proxy is not Stalwart
+      # jmapper is not Stalwart
       stalwartFeaturesEnabled = false;
 
       # "remember me" sessions and server-side settings sync

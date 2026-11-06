@@ -56,6 +56,21 @@
         "type": "github"
       }
     },
+    "jmapper": {
+      "locked": {
+        "lastModified": 1793950217,
+        "narHash": "sha256-6eYC+3S01+s05Mja+BiaGfS6grFtEXyB8x6FZYGeEzw=",
+        "owner": "amaanq",
+        "repo": "jmapper",
+        "rev": "17b8840a09fab5b44ddb57c89b8533a7381db388",
+        "type": "github"
+      },
+      "original": {
+        "owner": "amaanq",
+        "repo": "jmapper",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1792502884,
@@ -113,6 +128,7 @@
       "inputs": {
         "agenix": "agenix",
         "flake-parts": "flake-parts",
+        "jmapper": "jmapper",
         "nixpkgs": "nixpkgs",
         "nixpkgs-bulwark": "nixpkgs-bulwark",
         "pre-commit-hooks": "pre-commit-hooks",

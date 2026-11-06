@@ -24,5 +24,6 @@ in
   "tuwunel-registration-token.age".publicKeys = users ++ [ germanium ];
   "immich.age".publicKeys = users ++ [ toshiba ];
   "legacy-proxy-env.age".publicKeys = users ++ [ germanium ];
+  "jmapper-accounts.age".publicKeys = users ++ [ germanium ];
   "bulwark-session-secret.age".publicKeys = users ++ [ germanium ];
 }

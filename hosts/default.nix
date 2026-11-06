@@ -22,7 +22,7 @@ in
         "${mod}/services/bulwark.nix"
         "${mod}/services/caddy.nix"
         "${mod}/services/immich-proxy.nix"
-        "${mod}/services/legacy-proxy.nix"
+        "${mod}/services/jmapper.nix"
         "${mod}/services/soju.nix"
         "${mod}/services/tuwunel.nix"
         "${mod}/services/vaultwarden.nix"
